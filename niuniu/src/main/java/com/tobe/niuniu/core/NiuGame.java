@@ -55,9 +55,30 @@ public class NiuGame {
     }
 
     public void printAllProbability() {
-        StringBuilder stringBuilder = new StringBuilder("Print all probability: \n");
 
         combineAlgorithm(0, 0, Player.PLAYER_CARD_NUMBER, ALL_CARD_NUMBER);
+
+        StringBuilder stringBuilder = new StringBuilder("The probability of NiuNiu: \n");
+        for (int i = 0; i <= 10; ++i) {
+            double probability = this.allNiuCount.get(i) / 2598960.0 * 100;
+
+            if (i == 0) {
+                stringBuilder.append(String.format("No niu: count %d, percentage %f%% \n", this.allNiuCount.get(i), probability));
+            } else if (i == 10) {
+
+                int jqkNiuniuCount = 4368;
+                double jqkNiuniuProbability = jqkNiuniuCount / 2598960.0 * 100;
+
+                int normalNiuniuCount = this.allNiuCount.get(i) - 4368;
+                double normalNiuniuProbability = normalNiuniuCount / 2598960.0 * 100;
+
+                stringBuilder.append(String.format("Niu niu: count %d, percentage %f%% \n", normalNiuniuCount, normalNiuniuProbability));
+                stringBuilder.append(String.format("Niu niu(JQK): count %d, percentage %f%% \n", jqkNiuniuCount, jqkNiuniuProbability));
+            } else {
+                stringBuilder.append(String.format("Niu %d: count %d, percentage %f%% \n", i, this.allNiuCount.get(i), probability));
+            }
+        }
+        System.out.println(stringBuilder.toString());
     }
 
     public void printWinProbability() {
@@ -71,26 +92,9 @@ public class NiuGame {
         // NiuGame game = new NiuGame(NiuGame.ROLE_PLAYER, player);
 
         NiuGame game = new NiuGame();
-
         game.printAllProbability();
 
-        System.out.println(game.allNiuCount);
 
-        StringBuilder stringBuilder = new StringBuilder("The probability of NiuNiu: \n");
-        for (int i = 0; i <= 10; ++i) {
-            double probability = game.allNiuCount.get(i) / 2598960.0 * 100;
-
-            if (i == 0) {
-                stringBuilder.append(String.format("No niu: count %d, percentage %f%% \n", game.allNiuCount.get(i), probability));
-            } else if (i == 10) {
-                stringBuilder.append(String.format("Niu niu: count %d, percentage %f%% \n", game.allNiuCount.get(i), probability));
-            } else {
-                stringBuilder.append(String.format("Niu %d: count %d, percentage %f%% \n", i, game.allNiuCount.get(i), probability));
-            }
-
-        }
-
-        System.out.println(stringBuilder.toString());
 
     }
 

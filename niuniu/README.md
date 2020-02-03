@@ -14,5 +14,6 @@ Niu 6: count 168096, percentage 6.467818%
 Niu 7: count 171304, percentage 6.591252% 
 Niu 8: count 168096, percentage 6.467818% 
 Niu 9: count 171304, percentage 6.591252% 
-Niu niu: count 191808, percentage 7.380183% 
+Niu niu: count 187440, percentage 7.212116% 
+Niu niu(JQK): count 4368, percentage 0.168067% 
 ```
