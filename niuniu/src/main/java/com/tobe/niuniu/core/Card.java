@@ -18,11 +18,11 @@ public class Card {
     }
 
     /***
-     * Return the literal value of the card, which are 1 to 10 including J, Q, K.
+     * Return the compute value of the card, which are 1 to 10 including J, Q, K.
      *
      * @return
      */
-    public int tValue() {
+    public int computeValue() {
         int value = this.index % TYPE_CARD_NUMBER + 1;
         // Handle 11, 12, 13 which is for J, Q, K
         if (value > 10) {
