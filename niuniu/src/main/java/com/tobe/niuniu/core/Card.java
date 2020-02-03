@@ -49,17 +49,7 @@ public class Card {
      */
     public String printableValue() {
         int value = this.comparableValue();
-        String printableValue = String.valueOf(value);
-
-        if (value == 11) {
-            printableValue = "J";
-        } else if (value == 12) {
-            printableValue = "Q";
-        } else if (value == 13) {
-            printableValue = "K";
-        }
-
-        return printableValue;
+        return CardUtil.cardValueToString(value);
     }
 
     /***
@@ -77,16 +67,7 @@ public class Card {
      * @return
      */
     public String cardTypeString() {
-        int cardType = this.cardType();
-        if (cardType == 0) {
-            return "♠";
-        } else if (cardType == 1) {
-            return "♥";
-        } else if (cardType == 2) {
-            return "♣";
-        } else {
-            return "♦";
-        }
+        return CardUtil.cardTypeToString(this.cardType());
     }
 
     /**

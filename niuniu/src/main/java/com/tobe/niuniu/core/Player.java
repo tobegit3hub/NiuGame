@@ -2,6 +2,7 @@ package com.tobe.niuniu.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /***
  * The object of Player represent one real player in the game which has five cards.
@@ -44,22 +45,51 @@ public class Player {
     }
 
 
-    public boolean has_niu() {
-        return false;
-    }
-
     public int what_niu() {
+
+
+
         return 0;
     }
 
 
     public static void main(String[] argv) {
 
-        int[] cardIndexs = new int[]{1, 21, 31, 42, 5};
+        /*
+        //int[] cardIndexs = new int[]{1, 21, 31, 42, 5};
+        int[] cardIndexs = new int[]{0, 6, 1, 2, 3};
 
         Player player1 = new Player(cardIndexs);
 
         System.out.println(player1.toString());
+
+        */
+
+        testCombine();
+
+    }
+
+    private static int cnt = 0;
+    private static Stack<Integer> s = new Stack<Integer>();
+
+    public static void kase3(int curnum, int curmaxv,  int maxnum, int maxv){
+        if(curnum == maxnum){
+            cnt++;
+            //System.out.println(s);
+            return;
+        }
+
+        for(int i = curmaxv + 1; i <= maxv; i++){ // i <= maxv - maxnum + curnum + 1
+            s.push(i);
+            kase3(curnum + 1, i, maxnum, maxv);
+            s.pop();
+        }
+    }
+
+    public static void testCombine(){
+        //kase3(0, 0, 4, 8);
+        kase3(0, 0, 5, 52);
+        System.out.println(cnt);
     }
     
 }

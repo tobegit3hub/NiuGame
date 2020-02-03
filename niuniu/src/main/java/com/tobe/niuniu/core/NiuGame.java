@@ -30,6 +30,8 @@ public class NiuGame {
         StringBuilder stringBuilder = new StringBuilder("Print all probability: \n");
         //System.out.println(stringBuilder.toString());
 
+        // All combination, C(4)(52) = 2598960
+        /*
         long combineNumber = 52 * 51 * 50 * 49 * 48; // 311875200
         int counter = 0;
 
@@ -39,6 +41,7 @@ public class NiuGame {
         }
 
         System.out.println("For end");
+        */
     }
 
     public void printWinProbability() {
