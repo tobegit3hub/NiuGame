@@ -1,7 +1,9 @@
 package com.tobe.niuniu.core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 /***
@@ -19,6 +21,24 @@ public class NiuGame {
     private Player player;
 
     private static Stack<Integer> selectedStack = new Stack<Integer>();
+
+    // The count of all the cards from niu 1 to niu niu
+    private Map<Integer, Integer> allNiuCount = new HashMap<Integer, Integer>();
+
+    {
+        allNiuCount.put(0, 0);
+        allNiuCount.put(1, 0);
+        allNiuCount.put(2, 0);
+        allNiuCount.put(3, 0);
+        allNiuCount.put(4, 0);
+        allNiuCount.put(5, 0);
+        allNiuCount.put(6, 0);
+        allNiuCount.put(7, 0);
+        allNiuCount.put(8, 0);
+        allNiuCount.put(9, 0);
+        allNiuCount.put(10, 0);
+
+    }
 
     public NiuGame() {
 
@@ -54,13 +74,30 @@ public class NiuGame {
 
         game.printAllProbability();
 
-        //System.out.println("User cards: " + player);
+        System.out.println(game.allNiuCount);
+
+        StringBuilder stringBuilder = new StringBuilder("The probability of NiuNiu: \n");
+        for (int i = 0; i <= 10; ++i) {
+            double probability = game.allNiuCount.get(i) / 2598960.0 * 100;
+
+            if (i == 0) {
+                stringBuilder.append(String.format("No niu: count %d, percentage %f%% \n", game.allNiuCount.get(i), probability));
+            } else if (i == 10) {
+                stringBuilder.append(String.format("Niu niu: count %d, percentage %f%% \n", game.allNiuCount.get(i), probability));
+            } else {
+                stringBuilder.append(String.format("Niu %d: count %d, percentage %f%% \n", i, game.allNiuCount.get(i), probability));
+            }
+
+        }
+
+        System.out.println(stringBuilder.toString());
+
     }
 
 
     private void combineAlgorithm(int currentSelectedNumber, int nextSelectableValue, int numberToSelect, int maxAvaibleValue){
         if(currentSelectedNumber == numberToSelect){
-            System.out.println(selectedStack);
+            // System.out.println(selectedStack);
             handleCombination();
             return;
         }
@@ -74,18 +111,23 @@ public class NiuGame {
 
     private void handleCombination() {
 
-
         int card0 = selectedStack.get(0);
         int card1 = selectedStack.get(1);
         int card2 = selectedStack.get(2);
         int card3 = selectedStack.get(3);
         int card4 = selectedStack.get(4);
 
-
         Player player = new Player(new int[]{card0, card1, card2, card3, card4});
         NiuResult result = player.computeResult();
-        System.out.println(player);
+        //System.out.println(result);
+
+        increaseNiuCount(result.getNiu());
 
     }
+
+    private void increaseNiuCount(int niu) {
+        this.allNiuCount.put(niu, this.allNiuCount.get(niu) + 1);
+    }
+
 
 }
