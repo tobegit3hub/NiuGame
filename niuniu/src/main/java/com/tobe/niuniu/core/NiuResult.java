@@ -102,7 +102,31 @@ public class NiuResult {
                 }
             }
         }
+    }
 
+    public boolean largerOrEqual(NiuResult other) {
+        // TODO: Merge with the following function
+        if (this.niu > other.niu) {
+            return true;
+        } else if (this.niu < other.niu) {
+            return false;
+        } else {
+            // The niu is equal
+            if (this.maxCardValue > other.maxCardValue) {
+                return true;
+            } else if (this.maxCardValue > other.maxCardValue) {
+                return false;
+            } else {
+                // The niu and card value is equal
+                if (this.maxCardType < other.maxCardType) {
+                    return true;
+                } else if (this.maxCardType > other.maxCardType) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
     }
 
 }
