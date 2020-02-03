@@ -107,7 +107,11 @@ public class Player {
 
        int threeCardCount = card0.computeValue() + card1.computeValue() + card2.computeValue();
        if (threeCardCount % 10 == 0) {
-           int niu = card3.computeValue() + card4.computeValue() % 10;
+           int niu = (card3.computeValue() + card4.computeValue()) % 10;
+           // Set 10 as niu niu
+           if (niu == 0) {
+               niu = 10;
+           }
            currentNiuResult.setNiu(niu);
        } else {
            currentNiuResult.setNiu(0);

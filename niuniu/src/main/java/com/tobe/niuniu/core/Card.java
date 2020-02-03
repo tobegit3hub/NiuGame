@@ -77,7 +77,7 @@ public class Card {
      */
     @Override
     public String toString() {
-        return String.format("The card is %s %s", this.cardTypeString(), this.printableValue());
+        return String.format("The card(%d) is %s %s", this.index, this.cardTypeString(), this.printableValue());
     }
 
     /***

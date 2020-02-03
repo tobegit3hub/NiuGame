@@ -63,7 +63,9 @@ public class NiuResult {
 
         if (this.niu == 0) {
             result = String.format("No niu, max card %s %s", this.maxCardTypeString, this.maxCardValueString);
-        } else {
+        } if (this.niu == 10) {
+            result = String.format("Niu niu, max card %s %s", this.maxCardTypeString, this.maxCardValueString);
+        }else {
             result = String.format("Niu %d, max card %s %s", this.niu, this.maxCardTypeString, this.maxCardValueString);
         }
 
